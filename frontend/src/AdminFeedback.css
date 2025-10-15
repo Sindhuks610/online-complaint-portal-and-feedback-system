@@ -1,0 +1,56 @@
+.admin-feedback-container {
+    max-width: 900px;
+    margin: 40px auto 100px;
+    padding: 20px;
+}
+
+.page-header h1 {
+    font-size: 2rem;
+    color: #333;
+}
+
+.feedback-list {
+    margin-top: 30px;
+}
+
+.feedback-card {
+    background: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+}
+
+.feedback-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+.feedback-meta {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 0.9rem;
+    color: #888;
+}
+
+.star-display span {
+    color: #ccc;
+    font-size: 1.2rem;
+}
+
+.star-display span.filled {
+    color: #f39c12;
+}
+
+.feedback-comment {
+    font-style: italic;
+    color: #555;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+}

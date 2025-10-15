@@ -1,0 +1,239 @@
+/* --- GLOBAL STYLES & FONT --- */
+body {
+    font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* Modern, professional font stack */
+    /* Soft, professional gradient background */
+    background: linear-gradient(135deg, #f0f4f8 0%, #e2e8f0 100%);
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    color: #1f2937;
+    /* Darker, more professional text color */
+}
+
+/* --- HOME CONTAINER & GRID --- */
+.home-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 30px;
+    box-sizing: border-box;
+}
+
+/* --- CARD STYLES --- */
+.home-card {
+    background: white;
+    padding: 40px;
+    border-radius: 18px;
+    /* Elevated, layered shadow for depth (like a modal) */
+    box-shadow:
+        0 4px 6px rgba(0, 0, 0, 0.05),
+        0 20px 25px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 400px;
+    /* Slimmer card on mobile */
+    width: 100%;
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    border: 1px solid #e5e7eb;
+    /* Subtle border */
+}
+
+.home-card:hover {
+    box-shadow:
+        0 6px 8px rgba(0, 0, 0, 0.08),
+        0 30px 40px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+}
+
+/* --- HEADER & BRANDING --- */
+.brand-header {
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #3b82f6;
+    /* Accent color border */
+}
+
+.portal-icon {
+    font-size: 36px;
+    margin-bottom: 10px;
+    color: #3b82f6;
+    /* Brand color */
+}
+
+.welcome-message {
+    margin: 0;
+    font-size: 16px;
+    color: #6b7280;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+.header-text {
+    margin: 5px 0 10px;
+    font-size: 28px;
+    color: #1f2937;
+    font-weight: 800;
+    /* Extra bold for impact */
+    line-height: 1.2;
+}
+
+.card-description {
+    font-size: 15px;
+    margin: 25px 0 40px;
+    color: #4b5563;
+    line-height: 1.6;
+}
+
+/* --- BUTTONS & CTAS --- */
+.cta-section {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    /* Spacing between buttons */
+}
+
+.link-style {
+    text-decoration: none;
+    width: 100%;
+}
+
+.home-btn {
+    padding: 15px 25px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 17px;
+    font-weight: 700;
+    width: 100%;
+    transition: all 0.3s ease;
+    text-transform: capitalize;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    /* Button shadow */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.signup-btn {
+    /* Primary Action - Brighter Green */
+    background-color: #10b981;
+    color: white;
+}
+
+.signup-btn:hover {
+    background-color: #059669;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
+}
+
+.login-btn {
+    /* Secondary Action - Professional Blue */
+    background-color: #3b82f6;
+    color: white;
+}
+
+.login-btn:hover {
+    background-color: #2563eb;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+}
+
+.button-icon {
+    margin-left: 10px;
+    font-size: 1.1em;
+}
+
+.separator {
+    color: #9ca3af;
+    font-size: 14px;
+    font-weight: 600;
+    margin: 20px 0;
+    text-transform: uppercase;
+}
+
+/* --- FOOTER/SUPPORT --- */
+.footer-note {
+    margin-top: 35px;
+    padding-top: 20px;
+    border-top: 1px dashed #d1d5db;
+    /* Dashed line for a softer separation */
+}
+
+.footer-note p {
+    font-size: 13px;
+    color: #9ca3af;
+    margin: 0;
+}
+
+
+/* ==================================== */
+/* --- RESPONSIVE DESKTOP LAYOUT --- */
+/* ==================================== */
+@media (min-width: 992px) {
+
+    /* Make the container take up the whole screen width */
+    .home-container {
+        padding: 50px;
+    }
+
+    .home-card {
+        max-width: 850px;
+        /* Wider card for two-column view */
+        padding: 60px;
+        display: grid;
+        grid-template-columns: 1.2fr 1fr;
+        /* 55% for info, 45% for form/CTAs */
+        text-align: left;
+        gap: 60px;
+    }
+
+    /* Left side (Branding & Info) */
+    .brand-info {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding-right: 20px;
+    }
+
+    .brand-header {
+        border-bottom: none;
+        margin-bottom: 20px;
+    }
+
+    .header-text {
+        font-size: 42px;
+        /* Larger title for desktop impact */
+        margin-bottom: 15px;
+    }
+
+    .card-description {
+        font-size: 18px;
+        margin-bottom: 0;
+    }
+
+    /* Right side (CTAs) */
+    .cta-column {
+        padding: 30px;
+        background-color: #f9fafb;
+        /* Light background for the CTA section */
+        border-radius: 12px;
+        border: 1px solid #e5e7eb;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .cta-prompt {
+        margin-top: 0;
+    }
+
+    .footer-note {
+        grid-column: 1 / -1;
+        /* Make footer span both columns */
+        text-align: center;
+        margin-top: 40px;
+    }
+}

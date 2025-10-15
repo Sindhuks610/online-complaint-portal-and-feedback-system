@@ -1,0 +1,242 @@
+/* Inherits general layout from AdminUsers/Dashboard */
+.admin-complaints-container {
+    max-width: 1200px;
+    margin: 40px auto 100px;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.admin-complaints-container h2 {
+    color: #34495e;
+    border-bottom: 2px solid #ccc;
+    padding-bottom: 10px;
+    margin-bottom: 30px;
+}
+
+.complaint-card {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 25px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    /* NEW: Default border-left */
+    border-left: 5px solid transparent;
+    transition: border-left 0.3s;
+}
+
+/* NEW STYLES FOR ESCALATION */
+.complaint-card.escalation-due {
+    border-left: 5px solid #e74c3c;
+    /* Red border for escalation */
+}
+
+.escalation-warning {
+    background-color: #fbe5e5;
+    /* Light red background */
+    color: #c0392b;
+    /* Dark red text */
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    font-weight: bold;
+    text-align: center;
+    border: 1px solid #e74c3c;
+}
+
+/* END NEW STYLES */
+
+
+.complaint-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 15px;
+    border-bottom: 1px dashed #eee;
+    padding-bottom: 10px;
+}
+
+.complaint-details h3 {
+    color: #2980b9;
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+
+.complaint-details p {
+    margin: 3px 0;
+    font-size: 14px;
+}
+
+/* Status Badges - Admin view */
+.status-badge {
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    color: white;
+    font-size: 13px;
+    white-space: nowrap;
+    /* Prevents wrapping */
+}
+
+.status-new {
+    background-color: #e67e22;
+}
+
+/* Orange */
+.status-under-review,
+.status-assigned {
+    background-color: #3498db;
+}
+
+/* Blue */
+.status-resolved {
+    background-color: #27ae60;
+}
+
+/* Green */
+.status-reply-sent {
+    background-color: #9b59b6;
+}
+
+/* Purple (Reply Sent) */
+
+/* Description and File */
+.description-admin {
+    border-left: 3px solid #f0f0f0;
+    padding-left: 15px;
+    margin: 15px 0;
+    font-style: italic;
+    color: #555;
+    font-size: 14px;
+}
+
+.file-link-admin {
+    display: inline-block;
+    margin-top: 5px;
+    color: #27ae60;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+/* Admin Actions Section */
+.admin-actions {
+    display: flex;
+    gap: 20px;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+    flex-wrap: wrap;
+}
+
+.action-group {
+    display: flex;
+    flex-direction: column;
+    /* Makes groups take equal space on larger screens */
+    flex: 1;
+    min-width: 250px;
+    gap: 5px;
+}
+
+.action-group label {
+    font-weight: bold;
+    color: #34495e;
+    font-size: 14px;
+}
+
+/* Status/Assign Selectors and Inputs */
+.status-selector,
+.assign-selector,
+.admin-comment-input {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.admin-comment-input {
+    margin-top: 5px;
+    flex-grow: 1;
+    /* Allow reply input to take space */
+}
+
+/* Buttons */
+.btn-update-status,
+.btn-assign,
+.btn-reply {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 10px;
+    transition: background-color 0.3s;
+}
+
+.btn-update-status {
+    background-color: #2980b9;
+    /* Blue */
+}
+
+.btn-update-status:hover {
+    background-color: #2471a3;
+}
+
+.btn-assign {
+    background-color: #8e44ad;
+    /* Purple */
+}
+
+.btn-assign:hover {
+    background-color: #7d3c98;
+}
+
+.btn-reply {
+    background-color: #e67e22;
+    /* Orange */
+}
+
+.btn-reply:hover {
+    background-color: #d35400;
+}
+
+/* Timeline (Same classes as mycomplaints.css, just for consistency) */
+.timeline {
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+}
+
+.timeline h4 {
+    color: #34495e;
+    margin-bottom: 10px;
+}
+
+.update-card {
+    padding: 10px;
+    margin-bottom: 8px;
+    border-left: 5px solid #bdc3c7;
+    background: #fcfcfc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+/* Specific timeline colors for admin view */
+.update-card.status-new {
+    border-left-color: #f39c12;
+}
+
+.update-card.status-assigned,
+.update-card.status-under-review {
+    border-left-color: #3498db;
+}
+
+.update-card.status-reply-sent {
+    border-left-color: #9b59b6;
+}
+
+.update-card.status-resolved {
+    border-left-color: #27ae60;
+}

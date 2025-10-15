@@ -1,0 +1,112 @@
+.admin-users-container {
+    max-width: 1000px;
+    margin: 40px auto 100px;
+    /* Space for fixed footer nav */
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.admin-users-container h2 {
+    color: #34495e;
+    border-bottom: 2px solid #ccc;
+    padding-bottom: 10px;
+    margin-bottom: 30px;
+}
+
+.users-table-wrapper {
+    overflow-x: auto;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.users-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.users-table th,
+.users-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.users-table th {
+    background-color: #34495e;
+    /* Header background */
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 14px;
+}
+
+.users-table tr:hover {
+    background-color: #f8f8f8;
+}
+
+/* Role Highlighting */
+.users-table tr.role-admin {
+    background-color: #fbe5e5;
+    /* Light red for Admin */
+}
+
+.users-table tr.role-staff {
+    background-color: #e5f5fb;
+    /* Light blue for Staff */
+}
+
+/* Role Selector */
+.role-selector {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    background-color: #fff;
+    font-size: 14px;
+    /* Styles for when the selector is disabled (e.g., self-lockout prevention) */
+    opacity: 0.7;
+}
+
+.role-selector:not([disabled]) {
+    opacity: 1;
+    transition: border-color 0.2s;
+}
+
+.role-selector:focus {
+    border-color: #2980b9;
+    outline: none;
+}
+
+/* --- Admin Footer Navigation (Common Styles) --- */
+.admin-footer-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-around;
+    background: #2c3e50;
+    /* Dark admin bar */
+    padding: 15px 0;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+}
+
+.admin-footer-nav a {
+    color: #ecf0f1;
+    text-decoration: none;
+    padding: 8px 15px;
+    border-radius: 6px;
+    transition: background-color 0.3s;
+    font-weight: bold;
+}
+
+.admin-footer-nav a:hover {
+    background-color: #34495e;
+}
+
+.admin-footer-nav a.active {
+    background-color: #2980b9;
+    /* Blue active state */
+}
