@@ -158,6 +158,53 @@ router.patch("/complaints/status/:id", async (req, res) => {
     }
 });
 
+
+// ... (keep all existing routes)
+
+/* 🟣 Escalate a Complaint */
+// Route: POST /api/admin/complaints/:id/escalate
+router.post("/complaints/:id/escalate", async (req, res) => {
+  const complaintId = req.params.id;
+  const { escalated_to, reason, updated_by } = req.body;
+
+  if (!escalated_to || !reason || !updated_by) {
+    return res.status(400).json({ error: "Missing required escalation details." });
+  }
+
+  try {
+    // Use a transaction to ensure all database updates succeed or fail together
+    await pool.query('START TRANSACTION');
+
+    // 1. Insert a new record into your 'escalations' table
+    await pool.query(
+      `INSERT INTO escalations (complaint_id, escalated_to, reason) VALUES (?, ?, ?)`,
+      [complaintId, escalated_to, reason]
+    );
+
+    // 2. Update the main complaint's status to 'Escalated'
+    await pool.query(
+      `UPDATE complaints SET status = 'Escalated' WHERE id = ?`,
+      [complaintId]
+    );
+
+    // 3. Add an entry to the 'complaint_updates' table to log this action in the timeline
+    const timelineComment = `Escalated to user ID ${escalated_to}. Reason: ${reason}`;
+    await pool.query(
+      `INSERT INTO complaint_updates (complaint_id, status, comment, updated_by) VALUES (?, 'Escalated', ?, ?)`,
+      [complaintId, timelineComment, updated_by]
+    );
+
+    await pool.query('COMMIT'); // Finalize the transaction
+    res.json({ message: "Complaint escalated successfully" });
+
+  } catch (err) {
+    await pool.query('ROLLBACK'); // Revert changes if an error occurred
+    console.error("Error escalating complaint:", err);
+    res.status(500).json({ error: "Failed to escalate complaint." });
+  }
+});
+
+// ... (keep the rest of the file)
 // --- (Keep all existing routes in adminR.js) ---
 
 /* 🟢 GET All Feedback for Admin Panel */
@@ -255,4 +302,22 @@ router.post("/reports/export", async (req, res) => {
         res.status(500).json({ error: "Failed to generate report." });
     }
 });
+
+// GET All Admins (for escalation dropdown)
+// Route: /api/admin/users/admins
+// ----------------------
+router.get("/admins", async (req, res) => {
+  try {
+    const [admins] = await pool.query(
+      `SELECT id, name FROM users WHERE role = 'admin' ORDER BY name ASC`
+    );
+    res.json(admins);
+  } catch (err)
+  {
+    console.error("Error fetching admins:", err);
+    res.status(500).json({ error: "Failed to retrieve admin list." });
+  }
+});
+
+
 export default router;

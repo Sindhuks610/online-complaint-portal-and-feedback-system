@@ -18,6 +18,7 @@ import AdminUsers from "./AdminUsers";
 import AdminSettings from "./AdminSettings";
 import AdminFeedback from "./AdminFeedback";
 import AdminReports from "./AdminReports";
+import EscalateComplaint from "./EscalateComplaint";
 
 const App = () => {
   return (
@@ -39,6 +40,7 @@ const App = () => {
         {/* Admin Routes (Protected - Role: 'admin') */}
         <Route path="/admin/dashboard" element={<AdminDashboard />} />
         <Route path="/admin/complaints" element={<AdminComplaints />} />
+        <Route path="/admin/escalate/:complaintId" element={<EscalateComplaint />} />
         <Route path="/admin/users" element={<AdminUsers />} />
         <Route path="/admin/feedback" element={<AdminFeedback />}/> {/* 👈 ADD THIS */}
         <Route path="/admin/reports" element={<AdminReports />}/>   

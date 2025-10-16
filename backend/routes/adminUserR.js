@@ -54,5 +54,17 @@ router.patch("/role/:id", async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 });
+router.get("/admins", async (req, res) => {
+  try {
+    const [admins] = await pool.query(
+      `SELECT id, name FROM users WHERE role = 'admin' ORDER BY name ASC`
+    );
+    res.json(admins);
+  } catch (err)
+  {
+    console.error("Error fetching admins:", err);
+    res.status(500).json({ error: "Failed to retrieve admin list." });
+  }
+});
 
 export default router;
